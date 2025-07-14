@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
-// import gp from "../assets/gp.png"; // ✅ Adjust to your path
+import gp from "../assets/gp.png"; // ✅ Adjust to your path
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <header className={`custom-headers ${animate ? "animate-header" : ""}`}>
         <div className="logo-container">
-          <img src={''} alt="Logo" className="header-logo" />
+          <img src={gp} alt="Logo" className="header-logo" />
         </div>
 
         <div className="header-titlee">NUAM ENTERPRISES</div>

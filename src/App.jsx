@@ -3,6 +3,11 @@ import Header from "./Components/Header";
 import "./Components/style.css";
 import HomeSection from "./Components/HomeSection";
 import About from "./Components/About";
+import Services from "./Components/Services";
+import Tool from "./Components/Tool";
+import Testimonial from "./Components/Testimonial";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -10,10 +15,11 @@ function App() {
     <Header />
       <HomeSection />
       <About />
-      <div style={{ height: "200vh", padding: "100px", background: "#111" }}>
-        <h2>Scroll Down</h2>
-        <p>This section is for scroll testing</p>
-      </div>
+      <Services />
+      <Tool />
+      <Testimonial />
+      <Contact/>
+      <Footer/>
 
     </>
   );

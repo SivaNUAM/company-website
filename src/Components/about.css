@@ -15,6 +15,7 @@
   flex-direction: column;
   text-align: center;
   overflow: hidden;
+  animation: fadeInScale 1s ease-out;
 }
 
 /* Circular video container with glow */
@@ -24,10 +25,11 @@
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 25px #6c5ce7, 0 0 40px #a29bfe;
+  border: 6px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 25px #f72585, 0 0 60px #c9184a66;
   margin-bottom: 40px;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  animation: pulseShadow 3s infinite;
 }
 
 .blob-video {
@@ -37,17 +39,6 @@
   border-radius: 50%;
 }
 
-/* Logo on top of video */
-.blob-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  pointer-events: none;
-}
 .heading-container {
   position: relative;
   z-index: 3;
@@ -56,6 +47,7 @@
   margin: 0 auto;
   padding: 40px 20px;
   text-align: center;
+  animation: fadeInUp 1.2s ease forwards;
 }
 
 .about-title {
@@ -68,14 +60,15 @@
 }
 
 .about-title span {
-  color: #a29bfe;
+  color: #f72585;
 }
 
 .mission-text {
   font-size: 22px;
   font-weight: 500;
-  color: #f1f1f1;
+  color: #f8f8f8;
   margin-bottom: 18px;
+  animation: fadeInUp 1.6s ease forwards;
 }
 
 .sub-text {
@@ -83,9 +76,8 @@
   color: #cccccc;
   line-height: 1.7;
   opacity: 0.85;
+  animation: fadeInUp 1.8s ease forwards;
 }
-
-/* Responsive adjustments only for this block */
 
 /* === PAGE 2 === */
 .image-section {
@@ -95,7 +87,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-    scroll-snap-align: start;
+  scroll-snap-align: start;
 }
 
 /* Zoom animation background */
@@ -103,18 +95,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: zoomIn 20s ease-in-out infinite alternate;
+  animation: zoomIn 18s ease-in-out infinite alternate;
   filter: brightness(60%);
   position: absolute;
   top: 0;
   left: 0;
-
-  /* Fade out bottom effect */
   mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
-/* Gradient overlay layer */
+/* Gradient overlay */
 .image-overlay::before {
   content: "";
   position: absolute;
@@ -132,34 +122,34 @@
   max-width: 600px;
   border-radius: 16px;
   text-align: center;
-  animation: fadeInUp 1.4s ease-out;
-  transform: translateY(20px);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 1.6s ease-out 0.3s forwards;
   color: #fff;
   margin-bottom: 80px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .caption h2 {
   font-size: 36px;
   margin-bottom: 10px;
+  color: #c9184a;
 }
 
 .caption p {
   font-size: 18px;
   opacity: 0.9;
+  color: #eee;
 }
 
-/* Background zoom animation */
+/* === Animations === */
 @keyframes zoomIn {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08);
-  }
+  0% { transform: scale(1); }
+  100% { transform: scale(1.07); }
 }
 
-/* Caption fade in */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -171,21 +161,36 @@
   }
 }
 
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseShadow {
+  0%, 100% {
+    box-shadow: 0 0 25px #f72585, 0 0 60px #c9184a66;
+  }
+  50% {
+    box-shadow: 0 0 35px #f72585, 0 0 80px #c9184a99;
+  }
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
   .caption {
-    margin-bottom: 40px;
+    margin: 0 16px 40px;
     padding: 20px;
     max-width: 90%;
-    font-size: 14px;
-    backdrop-filter: blur(6px);
-    margin-left: 15px;
-
   }
 
   .caption h2 {
     font-size: 24px;
-    margin-bottom: 10px;
   }
 
   .caption p {
@@ -193,31 +198,23 @@
     line-height: 1.5;
   }
 
-  .image-section {
-    height: 100vh; /* Keep same height */
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+  .about-title {
+    font-size: 38px;
   }
 
-  .image-overlay {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  .mission-text {
+    font-size: 18px;
+  }
+
+  .sub-text {
+    font-size: 14px;
+  }
+
+  .image-section {
+    height: 100vh;
   }
 
   .cover-img {
-    position: absolute;
-    width: 100%;
     height: 100%;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    animation: zoomIn 20s ease-in-out infinite alternate;
-    filter: brightness(60%);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   }
 }

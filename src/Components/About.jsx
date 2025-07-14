@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import './about.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import mediums from "../assets/video/mediums.mp4";
 // import logo from "../assets/logo.png";
 import about from "../assets/about.jpg"; // For image section
