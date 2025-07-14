@@ -1,0 +1,238 @@
+.about-page {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === PAGE 1 === */
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Circular video container with glow */
+.blob-animated-bg {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 25px #6c5ce7, 0 0 40px #a29bfe;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.blob-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Logo on top of video */
+.blob-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+.heading-container {
+  position: relative;
+  z-index: 3;
+  max-width: 850px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.about-title span {
+  color: #a29bfe;
+}
+
+.mission-text {
+  font-size: 22px;
+  font-weight: 500;
+  color: #f1f1f1;
+  margin-bottom: 18px;
+}
+
+.sub-text {
+  font-size: 16px;
+  color: #cccccc;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* Responsive adjustments only for this block */
+
+/* === PAGE 2 === */
+.image-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+    scroll-snap-align: start;
+}
+
+/* Zoom animation background */
+.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomIn 20s ease-in-out infinite alternate;
+  filter: brightness(60%);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Fade out bottom effect */
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* Gradient overlay layer */
+.image-overlay::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1;
+}
+
+/* Animated caption */
+.caption {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  text-align: center;
+  animation: fadeInUp 1.4s ease-out;
+  transform: translateY(20px);
+  color: #fff;
+  margin-bottom: 80px;
+  backdrop-filter: blur(6px);
+}
+
+.caption h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.caption p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Background zoom animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+/* Caption fade in */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .caption h2 {
+    font-size: 24px;
+  }
+  .caption p {
+    font-size: 14px;
+  }
+  .caption {
+    margin: 20px;
+    padding: 20px;
+  }
+  .about-title {
+    font-size: 36px;
+  }
+
+  .mission-text {
+    font-size: 18px;
+  }
+
+  .sub-text {
+    font-size: 14px;
+  }
+   .image-section {
+    height: auto;
+    display: block;
+  }
+
+  .image-overlay {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cover-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .caption {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 20px 16px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .caption h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .caption p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

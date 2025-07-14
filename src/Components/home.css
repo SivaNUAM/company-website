@@ -1,0 +1,205 @@
+/* 🔲 Wrapper */
+html, body {
+  font-family: 'Merriweather', 'Georgia', serif;
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+.parallax-video-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* 🎥 Video */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150%;
+  width: 100%;
+  z-index: -3;
+  transition: transform 0.2s ease-out;
+}
+
+.parallax-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+
+/* 💬 Content Container */
+.content-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+  z-index: 2;
+}
+
+.content-split.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🧊 Glass Card */
+.glass-card {
+  /* background: rgba(255, 255, 255, 0.05); */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); */
+}
+
+/* 📝 Left */
+.left-side {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.left-side h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.left-side h1 span {
+  color: #f72585;
+  background: linear-gradient(90deg, #f72585, #7209b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.left-side p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #eee;
+}
+
+.left-side button {
+  background: #f72585;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 10px 25px rgba(247, 37, 133, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.left-side button:hover {
+  background: #c9184a;
+  box-shadow: 0 12px 32px rgba(247, 37, 133, 0.5);
+}
+
+/* 📱 Right Image */
+.right-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 6s ease-in-out infinite;
+}
+
+.right-side img {
+  max-width: 450px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 0, 150, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.right-side img:hover {
+  transform: scale(1.03) rotateY(3deg);
+}
+
+/* 🌀 Float */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .content-split {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .left-side {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  .right-side img {
+    width: 220px;
+  }
+
+  .glass-card {
+    padding: 30px 20px;
+  }
+}
+
+/* 🎨 Noise Overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/noise.png');
+  opacity: 0.05;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 🌀 Animated SVG shapes */
+.svg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle-shape {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f72585;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  animation: float 4s infinite ease-in-out;
+  opacity: 0.15;
+  filter: blur(2px);
+}
+
+.triangle-shape {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid #7209b7;
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  opacity: 0.1;
+  animation: float 5s infinite ease-in-out;
+  filter: blur(1px);
+}
