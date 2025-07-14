@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import "./home.css";
 import mobilee from "../assets/video/mobilee.mp4";
 import gp2 from "../assets/gp2.jpg";
 
 const HomeSection = () => {
-  const [offsetY, setOffsetY] = useState(0);
   const controls = useAnimation();
 
   useEffect(() => {
     controls.start({ opacity: 1, y: 0 });
 
-    let animationFrame;
+    const videoBg = document.querySelector(".video-background");
+
     const handleScroll = () => {
-      animationFrame = requestAnimationFrame(() => {
-        setOffsetY(window.scrollY);
-      });
+      const scrollY = window.scrollY;
+      if (videoBg) {
+        videoBg.style.transform = `translateY(${scrollY * 0.4}px)`; // Parallax
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(animationFrame);
     };
   }, [controls]);
 
-  // Variants for content animation
   const contentVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -35,7 +34,6 @@ const HomeSection = () => {
     },
   };
 
-  // Button hover animation
   const buttonVariants = {
     hover: {
       scale: 1.1,
@@ -45,7 +43,6 @@ const HomeSection = () => {
     tap: { scale: 0.95 },
   };
 
-  // Image animation
   const imageVariants = {
     initial: { scale: 0.8, opacity: 0, rotateY: 10 },
     visible: {
@@ -59,10 +56,8 @@ const HomeSection = () => {
 
   return (
     <section className="parallax-video-wrapper">
-      {/* 🎥 Video Background */}
       <motion.div
         className="video-background"
-        style={{ transform: `translateY(${offsetY * 0.5}px)` }}
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
@@ -77,10 +72,8 @@ const HomeSection = () => {
         />
       </motion.div>
 
-      {/* ✨ Particle Effects (Canvas for dynamic particles) */}
       <canvas className="particle-canvas" />
 
-      {/* 🔷 SVG Shapes */}
       <div className="svg-shapes">
         <motion.div
           className="circle-shape"
@@ -100,10 +93,8 @@ const HomeSection = () => {
         />
       </div>
 
-      {/* 🌫️ Noise Overlay */}
       <div className="noise-overlay" />
 
-      {/* 💬 Content Section */}
       <motion.div
         className="content-split"
         variants={contentVariants}

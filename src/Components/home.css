@@ -1,4 +1,3 @@
-/* 🔲 Wrapper */
 html, body {
   font-family: 'Merriweather', 'Georgia', serif;
   scroll-behavior: smooth;
@@ -23,14 +22,14 @@ html, body {
   height: 150%;
   width: 100%;
   z-index: -3;
-  transition: transform 0.2s ease-out;
+  will-change: transform;
 }
 
 .parallax-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.4) contrast(1.1); /* Enhanced for depth */
+  filter: brightness(0.4) contrast(1.1);
 }
 
 /* ✨ Particle Canvas */
@@ -82,7 +81,7 @@ html, body {
   font-size: 3.5rem;
   margin-bottom: 25px;
   line-height: 1.2;
-  background: linear-gradient(45deg, #f72585, #00f4ff); /* Dynamic gradient */
+  background: linear-gradient(45deg, #f72585, #00f4ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -138,40 +137,53 @@ html, body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247, 37, 133, 0.3);
 }
 
-/* 🌀 Float Animation */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
 /* 📱 Responsive */
 @media (max-width: 768px) {
   .content-split {
     flex-direction: column;
     text-align: center;
     padding: 20px;
+    gap: 7px;
+    margin-top: 49px;
+    align-items: center;
   }
 
   .left-side {
     padding: 0;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .left-side h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .left-side p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .left-side button {
+    font-size: 1rem;
+    padding: 14px 28px;
   }
 
   .right-side img {
-    max-width: 300px;
+    max-width: 90%;
+    height: auto;
   }
 
   .glass-card {
-    padding: 30px 20px;
+    padding: 25px 15px;
+    margin: 0 10px;
+  }
+
+  .video-background {
+    height: 120%;
   }
 }
 
-/* 🎨 Noise Overlay */
+/* 🌀 Shapes + Noise */
 .noise-overlay {
   position: absolute;
   inset: 0;
@@ -181,7 +193,6 @@ html, body {
   pointer-events: none;
 }
 
-/* 🌀 Animated SVG Shapes */
 .svg-shapes {
   position: absolute;
   top: 0;

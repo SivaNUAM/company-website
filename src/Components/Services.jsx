@@ -13,7 +13,7 @@ const services = [
     color: '#f72585',
   },
   {
-    title: 'Digital Marketiong and Seo',
+    title: 'Digital Marketiong and Search Engine Optimization',
     description: 'Craft stunning brand visuals and strategies.',
     image: gp1,
     color: '#7209b7',
