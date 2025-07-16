@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
-import gp from "../assets/gp.png"; // ✅ Adjust to your path
+import gp from "../assets/gp.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // 🔸 dropdown state
 
   useEffect(() => {
     setTimeout(() => setAnimate(true), 100);
@@ -12,6 +14,11 @@ const Header = () => {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
+  // Close dropdown when fullscreen menu closes
+  useEffect(() => {
+    if (!menuOpen) setDropdownOpen(false);
   }, [menuOpen]);
 
   return (
@@ -37,10 +44,31 @@ const Header = () => {
         <button className="close-btn" onClick={() => setMenuOpen(false)}>
           ×
         </button>
+
         <ul className="fullscreen-linkss">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Sevices</a></li>
+          <li>
+            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          </li>
+
+          <li className={`fullscreen-dropdown ${dropdownOpen ? "open" : ""}`}>
+            <span onClick={() => setDropdownOpen(!dropdownOpen)}>About ▾</span>
+            <ul className="fullscreen-submenu">
+              <li>
+                <Link to="/about" onClick={() => { setDropdownOpen(false); setMenuOpen(false); }}>About</Link>
+              </li>
+              <li>
+                <Link to="/about/overview" onClick={() => { setDropdownOpen(false); setMenuOpen(false); }}>Our Philosophy</Link>
+              </li>
+              <li>
+                <Link to="/about/leadership" onClick={() => { setDropdownOpen(false); setMenuOpen(false); }}>Our Journey</Link>
+              </li>
+              <li>
+                <Link to="/about/mission" onClick={() => { setDropdownOpen(false); setMenuOpen(false); }}>Culture</Link>
+              </li>
+            </ul>
+          </li>
+
+          <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
           <li><a href="#">Contact</a></li>
           <button className="btn1">Explore us</button>
         </ul>

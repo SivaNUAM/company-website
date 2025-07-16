@@ -5,6 +5,10 @@ import mobilee from "../assets/video/mobilee.mp4";
 import gp2 from "../assets/gp2.jpg";
 
 const HomeSection = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const controls = useAnimation();
 
   useEffect(() => {
