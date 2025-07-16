@@ -32,7 +32,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="about-page">
+    <div className="about-pages">
       {/* === Section 1: Parallax About Us === */}
       <section className="about-section">
         <div className="parallax-layer parallax-video">
