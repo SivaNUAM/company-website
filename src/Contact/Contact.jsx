@@ -1,8 +1,11 @@
-import React from "react";
+import {React,useEffect} from "react";
 import "./Contacts.css";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact = () => {
+      useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <section className="contact-section">
       <div className="overlay-bg" />
