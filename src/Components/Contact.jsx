@@ -19,16 +19,16 @@ const Contact = () => {
         {/* Contact Info */}
         <div className="contact-info" data-aos="fade-right">
           <div className="info-box">
-            <h3>📞 Phone</h3>
-            <p>+91 98765 43210</p>
+            <h3>📞 Contact</h3>
+            <p>+91 6282603759</p>
           </div>
           <div className="info-box">
             <h3>✉️ Email</h3>
-            <p>contact@nuamtech.in</p>
+            <p>Info@nuamenterprises.com</p>
           </div>
           <div className="info-box">
             <h3>📍 Address</h3>
-            <p>Ernakulam, Kerala, India</p>
+            <p>3/675, Neriyakkal House, Unichira, Thrikkakara, Thrikkakara, Ernakulam, Ernakulam- 682021, Kerala, India</p>
           </div>
         </div>
 

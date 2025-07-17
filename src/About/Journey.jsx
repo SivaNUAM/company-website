@@ -3,32 +3,27 @@ import { motion } from "framer-motion";
 import "./abouts.css"; // Create this CSS file or add styles globally
 
 const Journey = () => {
-  const journeyData = [
-    {
-      year: "2020",
-      title: "Founded NUAM",
-      description:
-        "Launched with a vision to blend technology and creativity, delivering 10+ projects in the first year.",
-    },
-    {
-      year: "2022",
-      title: "Global Reach",
-      description:
-        "Expanded to serve 30+ clients across 5 countries, achieving 5X growth.",
-    },
-    {
-      year: "2024",
-      title: "Awarded Excellence",
-      description:
-        "Earned 5+ awards for innovation and creativity in digital solutions.",
-    },
-    {
-      year: "2025",
-      title: "10X Growth",
-      description:
-        "Delivered 120+ projects globally, becoming a leader in transformative solutions.",
-    },
-  ];
+const journeyData = [
+  {
+    year: "2025",
+    title: "NUAM Launched",
+    description:
+      "NUAM officially started its journey with a mission to unite design, technology, and innovation. In just a few months, we successfully delivered 3+ projects and began forming strong relationships with early clients.",
+  },
+  {
+    year: "2025",
+    title: "Identity & Foundation",
+    description:
+      "Launched our official branding, website, and service offerings. Focused on building trust, delivering quality, and creating a solid startup identity rooted in creativity and reliability.",
+  },
+  {
+    year: "2025",
+    title: "First Milestones Achieved",
+    description:
+      "Completed multiple projects across industries, received positive testimonials, and laid the groundwork for long-term growth through a focus on excellence and innovation.",
+  },
+];
+
 
   return (
     <section id="journey" className="about-section journey">
