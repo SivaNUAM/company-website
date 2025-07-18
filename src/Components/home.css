@@ -39,6 +39,19 @@
   will-change: transform;
 }
 
+/* Step effect on desktop */
+.gallery .card:nth-child(1),
+.gallery .card:nth-child(4) {
+  --shift: 80px;
+  transform: translateY(var(--shift));
+}
+
+.gallery .card:nth-child(2),
+.gallery .card:nth-child(3) {
+  --shift: -20px;
+  transform: translateY(var(--shift));
+}
+
 .card-img {
   width: 100%;
   height: 100%;
@@ -63,7 +76,6 @@
 }
 
 .card-overlay h2 {
-  /* color: var(--highlight); */
   font-size: 1.8rem;
   margin-bottom: 8px;
 }
@@ -75,7 +87,7 @@
 
 /* Hover effect */
 .card:hover {
-  transform: scale(1.05) translateZ(60px);
+  transform: translateY(var(--shift)) scale(1.05) translateZ(60px);
   z-index: 2;
   box-shadow: 0 0 30px rgba(247, 37, 133, 0.5);
 }
@@ -83,7 +95,7 @@
 /* Active bulge */
 .card.active {
   flex: 1.4;
-  transform: scale(1.15) translateZ(120px);
+  transform: translateY(var(--shift)) scale(1.15) translateZ(120px);
   z-index: 3;
   box-shadow: 0 0 50px rgba(247, 37, 133, 0.8);
 }
@@ -91,7 +103,7 @@
 /* Compressed cards */
 .card.compressed {
   flex: 0.8;
-  transform: scale(0.95);
+  transform: translateY(var(--shift)) scale(0.95);
   opacity: 0.8;
 }
 
@@ -99,31 +111,45 @@
 @media (max-width: 768px) {
   .gallery {
     flex-direction: row;
-    height: 55vh; /* slightly shorter for comfort */
+    height: 55vh;
     gap: 0.5rem;
     padding: 0 1rem;
-    overflow-x: auto; /* allow horizontal scrolling if needed */
+    overflow-x: auto;
   }
 
   .card {
     flex: 1;
     height: 55vh;
     border-radius: 20px;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.6s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease;
+    touch-action: manipulation;
+    will-change: transform, box-shadow;
   }
 
-  /* Hover and active tap effect */
-  .card:hover,
+  /* Tap bulge animation */
   .card:active {
-    transform: scale(1.15);
-    box-shadow: 0 0 50px var(--highlight);
-    z-index: 2;
+    animation: bulge 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes bulge {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 transparent;
+    }
+    50% {
+      transform: scale(1.15);
+      box-shadow: 0 0 40px var(--highlight);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 transparent;
+    }
   }
 
   .card-img {
     border-radius: 20px;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.4s ease;
     object-fit: cover;
   }
 
@@ -133,6 +159,7 @@
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
     border-radius: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
   }
 
   .card-overlay h2 {
@@ -140,13 +167,7 @@
     transition: font-size 0.3s ease;
   }
 
-  .card-overlay h2:hover {
-    font-size: 12px;
-  }
-
   .card-overlay p {
     font-size: 0.8rem;
   }
 }
-
-
