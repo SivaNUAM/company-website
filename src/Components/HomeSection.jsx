@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
-import tech from "../assets/tech.jpg";
-import agro from "../assets/agro.jpg";
-import media from "../assets/media.jpg";
-import box from "../assets/box.jpg";
+import robot from "../assets/robot.jpg";
+import medias from "../assets/medias.png";
+import agros from "../assets/agros.png";
+import boxes from "../assets/boxes.png";
 
 const cardsData = [
-  { title: "NUAM TECH", description: "", image: tech },
-  { title: "NUAM AGROTECH", description: "", image: agro },
-  { title: "NUAM STORYBOX", description: "", image: box },
-  { title: "NUAM MEDIA", description: "", image: media },
+  { title: "NUAM TECH", description: "", image: robot },
+  { title: "NUAM AGROTECH", description: "", image: agros },
+  { title: "NUAM STORYBOX", description: "", image: boxes },
+  { title: "NUAM MEDIA", description: "", image: medias },
 ];
 
 const HomeSection = () => {
