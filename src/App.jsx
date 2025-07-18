@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <Load />;
+    // return <Load />;
   }
 
   return (
